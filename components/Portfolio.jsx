@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 
 import BlurText from "./BlurText";
 import Waves from "./Waves";
+import LogoLoop from "./LogoLoop";
+import { SiExpress, SiNextdotjs, SiNodedotjs, SiPostgresql, SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 
 const pdf = "Shaktivel_Thevar_Resume.pdf";
@@ -11,6 +13,15 @@ const mail = "mailto:shaktithevar87@gmail.com";
 const projects = [
   {title:"AlzCare", domain:"Healthcare", year:"2025", theme:"care", description:"A patient workspace that brings records and assessment workflows together.", detail:"I connected responsive React screens to REST APIs, optimized PostgreSQL queries, and used Firebase Authentication to manage sign-in and access.", tools:["React","Express","PostgreSQL","Firebase"]},
   {title:"LawGPT", domain:"Legal research", year:"2024", theme:"law", description:"A search interface for finding legal cases and exploring their records.", detail:"I designed the PostgreSQL schema for case records, wrote retrieval endpoints in Express and Node.js, and built a responsive React interface for exploring results.", tools:["React","Node.js","Express","PostgreSQL"]}
+];
+const techLogos = [
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  { node: <SiExpress />, title: "Express", href: "https://expressjs.com" },
+  { node: <SiPostgresql />, title: "PostgreSQL", href: "https://www.postgresql.org" },
+  { node: <SiNodedotjs />, title: "Node.js", href: "https://nodejs.org" }
 ];
 const skills = [
   ["Interface", "React.js, Next.js, Tailwind CSS, Material UI, responsive design"],
@@ -44,9 +55,10 @@ export default function Portfolio(){
     <header><div className="wrap navrow"><Brand/><nav aria-label="Main menu"><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav><a className="pill outline" href={pdf} download>Get résumé</a></div></header>
     <main id="main">
       <section className="hero"><div className="aura"/><div className="wave-field" aria-hidden="true"><Waves lineColor="#7a72df" accentColor="#aea7ff" rotation={62} spacing={11} amplitude={46} speed={.34} opacity={.39} paused={quiet} intro={!quiet} mouseInteraction={!quiet} clickRipple={!quiet}/></div>
-        <div className="wrap stage"><div className="intro"><div className="role"><i/>Full-stack developer</div><h1 aria-label="Shaktivel Thevar">{quiet?<><span>Shaktivel</span><span>Thevar.</span></>:<><BlurText className="name" text="Shaktivel" animateBy="letters" delay={32} trigger="load" direction="bottom" distance={22}/><BlurText className="name surname" text="Thevar." animateBy="letters" delay={55} trigger="load" direction="bottom" distance={25}/></>}</h1><p>I build the interface you see and the APIs and databases that make it work.</p><div className="actions"><a className="pill primary" href="#projects">Explore projects</a><a className="pill light" href={mail}>Email me</a></div></div>
+        <div className="wrap stage"><div className="intro"><div className="role"><i/>Full-stack developer</div><h1 aria-label="Shaktivel Thevar">{quiet?<><span>Shaktivel</span><span>Thevar.</span></>:<><BlurText className="name" text="Shaktivel" animateBy="letters" delay={24} stepDuration={0.22} blur={0} trigger="load" direction="bottom" distance={16}/><BlurText className="name surname" text="Thevar." animateBy="letters" delay={24} stepDuration={0.22} blur={0} trigger="load" direction="bottom" distance={16}/></>}</h1><p>I build the interface you see and the APIs and databases that make it work.</p><div className="actions"><a className="pill primary" href="#projects">Explore projects</a><a className="pill light" href={mail}>Email me</a></div></div>
         <Sculpture/></div><div className="wrap herofoot"><span>Mumbai, India</span><button type="button" aria-pressed={!quiet} onClick={()=>setQuiet(!quiet)}><i aria-hidden="true">{quiet?"▶":"Ⅱ"}</i> Motion {quiet?"off":"on"}</button></div>
       </section>
+      <section className="stack wrap" aria-label="Technology stack"><p className="stack-label">Technologies I work with</p><LogoLoop logos={techLogos} speed={38} ariaLabel="Technologies including React, Next.js, TypeScript, Tailwind CSS, Express, PostgreSQL, and Node.js" /></section>
       <section className="wrap work" id="projects"><div className="section-title"><h2>Selected projects<span>.</span></h2><span className="year">2024 — 2025</span></div><div className="grid">{projects.map(p=><Project key={p.title} project={p}/>)}</div></section>
       <section className="experience" id="experience"><div className="wrap split"><h2>Experience<span>.</span></h2><div className="employment"><div className="meta"><span>Ptex Solutions</span><span>Dec 2025 – present</span></div><h3>Junior Developer</h3><p>In Mumbai, I build React features for internal dashboards and workflow tools. I design Express endpoints and PostgreSQL schemas, then test and refine the features with the teams who use them.</p></div></div></section>
       <section className="wrap split toolbox"><h2>Toolkit<span>.</span></h2><dl>{skills.map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl></section>
